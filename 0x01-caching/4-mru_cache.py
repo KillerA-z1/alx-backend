@@ -6,7 +6,7 @@ from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
-    """ MRUCache defines a MRU caching system
+    """ MRUCache defines an MRU caching system
     """
 
     def __init__(self):
@@ -25,7 +25,7 @@ class MRUCache(BaseCaching):
             self.usage_order.append(key)
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                mru_key = self.usage_order.pop()
+                mru_key = self.usage_order.pop(-2)
                 del self.cache_data[mru_key]
                 print(f"DISCARD: {mru_key}")
 
@@ -36,4 +36,4 @@ class MRUCache(BaseCaching):
             return None
         self.usage_order.remove(key)
         self.usage_order.append(key)
-        return self.cache_data.get(key)
+        return self.cache_data[key]
