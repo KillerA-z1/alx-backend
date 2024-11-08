@@ -19,13 +19,16 @@ app = Flask(__name__)
 # Define the blueprint
 app_routes = Blueprint('app_routes', __name__)
 
+
 @app_routes.route('/')
 def index():
     """Render the index.html template."""
     return render_template('0-index.html')
 
+
 # Register the blueprint with the Flask app
 app.register_blueprint(app_routes)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
